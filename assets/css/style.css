@@ -1,0 +1,14 @@
+:root {
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --oxford-blue: rgb(20, 33, 61);
+    --orange-web: rgb(252, 163, 17);
+    --platinum: rgb(229, 229, 229);
+    --error: rgb(255, 0, 0);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
