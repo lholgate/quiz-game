@@ -8,8 +8,45 @@
     <title>Quiz Game</title>
 </head>
 <body>
-    
+    <header class="container">
+        <button class="score">View High Scores</button>
+        <p class="timer">
+            Time Remaining: <span id="timer-countdown">60s</span>
+        </p>
+    </header>
+    <main class="container">
+        <div class="question-box">
+            <div>
+                <p class="question">
+                    This is the question?
+                </p>
+                <ol class="answers">
+                    <li>Answer 1</li>
+                    <li>Answer 2</li>
+                    <li>Answer 3</li>
+                    <li>Answer 4</li>
+                </ol>
+            </div>
+        </div>
+        <div class="start-box">
+            <div>
+                <p class="start-message">
+                    Start Message.
+                </p>
+                <button class="start">Start</button>
+            </div>
+        </div>
+        <div class="score-box">
+            <div>
+                <p class="initials">
+                    High Score!
+                </p>
+                <button class="start">Save</button>
+            </div>
+        </div>
+    </main>
 
     <link rel="scripts" href="./assets/js/scripts.js">
+    <link rel="scripts" href="./assets/js/questions.js">
 </body>
 </html>
