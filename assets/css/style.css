@@ -36,16 +36,17 @@
     padding: 25px;
     min-height: 300px;
     min-width: 400px;
-    display:none;
+    display: none;
+    flex-direction: column;
   }
 
-  .question {
+  /* .question {
+    display: flex;
+    flex-direction: column;
     text-align: left;
-
-  }
+  } */
 
   .answers {
-    text-align: left;
     margin: auto;
     padding: 10px 30px;
   }
@@ -57,7 +58,16 @@
     padding: 25px;
     min-height: 300px;
     min-width: 400px;
-    display:none;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    
+  }
+
+  .btn-start {
+    height: 50px;
+    font-size: 40px;
+    width: 200px;
   }
 
 
@@ -68,5 +78,25 @@
     padding: 25px;
     min-height: 300px;
     min-width: 400px;
-    display:block;
+    display:flex;
+    flex-direction: column;
+  }
+
+  .current-score {
+    text-align: right;
+  }
+
+  .start-box h2 {
+    text-align: center;
+  }
+
+  .score-board {
+    width: 50%;
+    border: 2px solid black;
+    margin: auto;
+    padding: 25px;
+    min-height: 300px;
+    min-width: 400px;
+    display:flex;
+    flex-direction: column;
   }

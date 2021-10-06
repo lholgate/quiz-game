@@ -16,32 +16,45 @@
     </header>
     <main class="container">
         <div class="question-box">
-            <div>
-                <p class="question">
-                    This is the question?
-                </p>
-                <ol class="answers">
-                    <li>Answer 1</li>
-                    <li>Answer 2</li>
-                    <li>Answer 3</li>
-                    <li>Answer 4</li>
-                </ol>
-            </div>
+    
+            <p class="question">
+                This is the question?
+            </p>
+            <ol class="answers">
+                <li>Answer 1</li>
+                <li>Answer 2</li>
+                <li>Answer 3</li>
+                <li>Answer 4</li>
+            </ol>
+            <p class="current-score">
+                Score: <span id="score-value">0</span>
+            </p>
         </div>
         <div class="start-box">
             <div>
+                <h2>Quiz Challenge</h2>
                 <p class="start-message">
-                    Start Message.
-                </p>
-                <button class="start">Start</button>
+                    This is a timed quiz challenge. You have 60 seconds to answer as many questions as you can. Every correct answer is worth 2 points, every incorrect answer will result in a lose of 1 point and 5 seconds off the timer.
+                </p><br>
+                <h3>Press start button to begin.</h3>
+                <button class="btn-start">Start</button>
             </div>
         </div>
         <div class="score-box">
             <div>
-                <p class="initials">
-                    High Score!
-                </p>
-                <button class="start">Save</button>
+                <p>Your final score is: <span id="final_score">50</span></p>
+                <label for="initials">Enter Initials -</label><br>
+                <input type="text" name="initials" id="initials">
+                <button class="btn-save">Save</button>
+            </div>
+        </div>
+        <div class="score-board">
+            <h2>High Scores</h2>
+            <div>
+                <ol class="high_scores">
+                    <li>LAH 50</li>
+                </ol>
+                
             </div>
         </div>
     </main>
