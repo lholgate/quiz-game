@@ -3,11 +3,14 @@ let startForm = document.getElementById("start-form");
 let questionForm = document.getElementById("question-form");
 let initialsForm = document.getElementById("initials-form");
 let scoreForm = document.getElementById("score-form");
+let initialBox = document.getElementById("initials");
+let finalScore = document.getElementById("final-score");
 
 let answerListItem = document.querySelector("#answers");
 let questionItem = document.querySelector("#question");
 let scoreBox = document.querySelector("#score-value");
 let scoreList = document.querySelector("#top-scores");
+
 
 let currentScore = 0;
 let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,initials:"LAH"}];
@@ -26,8 +29,8 @@ let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,i
 
 document.getElementById("btn-start").addEventListener("click", function(e){
     startForm.style.display="none";
-    questionForm.style.display="flex";
-    initialsForm.style.display="none";
+    questionForm.style.display="none";
+    initialsForm.style.display="flex";
     scoreForm.style.display="none";
 
     loadQuestion();
@@ -101,12 +104,25 @@ document.getElementById("answers").addEventListener("click", function(e){
 
 //Score form
 //  show final score in span - final_score
-//  listen for click in save button
-//  verify initials are entered
-//  save initials and score to local storage
-//  hide score form
-//  show score board
+//  listen for click in save button - Done
+//  verify initials are entered - Done 
+//  save initials and score to local storage - Done
+//  hide score form - Done
+//  show score board - Done
+document.getElementById("btn-save").addEventListener("click", function(){
 
+    if (initialBox.value) {
+        highScores = JSON.parse(localStorage.getItem('highScores'));
+        let newScore = {score:finalScore.innerText,initials:initialBox.value.toUpperCase()};
+        highScores.push(newScore);
+        localStorage.setItem("highScores",JSON.stringify(highScores));
+        loadScores();
+        initialBox.value="";
+    }
+    else {
+        alert("Please enter your Initials!");
+    }
+});
 
 //Score Board
 //  Retrieve values from local storage - Done
@@ -116,12 +132,12 @@ document.getElementById("answers").addEventListener("click", function(e){
 //  close score board - Done
 //  open start form - Done 
 
-document.getElementById("score-board").addEventListener("click", function(){
+function loadScores(){
     startForm.style.display="none";
     questionForm.style.display="none";
     initialsForm.style.display="none";
     scoreForm.style.display="flex";
-    // localStorage.setItem("highScores",JSON.stringify(highScores));
+    localStorage.setItem("highScores",JSON.stringify(highScores));
 
     scoreList.innerHTML="";
     highScores = JSON.parse(localStorage.getItem('highScores'));
@@ -136,6 +152,16 @@ document.getElementById("score-board").addEventListener("click", function(){
     
         scoreList.append(hScore);
     }
+}
+
+document.getElementById("score-board").addEventListener("click", function(){
+    loadScores();
+});
+
+document.getElementById("btn-clear").addEventListener("click", function(){
+    highScores = [];
+    localStorage.setItem("highScores",JSON.stringify(highScores));
+    loadScores();
 });
 
 
