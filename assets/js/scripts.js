@@ -1,7 +1,10 @@
 // Define global variables
 
-answerListItem = document.querySelector("#answers");
-questionItem = document.querySelector("#question");
+let answerListItem = document.querySelector("#answers");
+let questionItem = document.querySelector("#question");
+let scoreBox = document.querySelector("#score-value");
+
+let currentScore = 0;
 
 //Code for timer
 //  start timer
@@ -23,7 +26,7 @@ questionItem = document.querySelector("#question");
 //  set p-question values to question - Done
 //  dynamically generate ol for answers for questions (mark data element true/false for each answer) - Done
 //  listen for slick event on each li in ol object
-//  use hover to change color of answers background
+//  use hover to change color of answers background - Done
 //  on click:
 //      check data element on clicked object
 //          if true: display "CORRECT" message, increment score by 2, move to next question
@@ -45,6 +48,7 @@ var createAnswerList = function(answerList) {
 
         var questionAnswer = document.createElement("li");
         questionAnswer.className = "answer";
+        questionAnswer.id = "answerItem";
         questionAnswer.setAttribute("data-correct-answer", Object.values(answerList[i]));
         questionAnswer.textContent = Object.keys(answerList[i]);
     
@@ -67,6 +71,33 @@ var loadQuestion = function(){
     var answerList = questions[rndNumner].Answers;
     createAnswerList(answerList);
 }
+
+document.getElementById("answers").addEventListener("click", function(e){
+    console.log(e.target);
+    console.log(e.target.dataset.correctAnswer);
+
+    if (e.target.dataset.correctAnswer === "true") {
+        console.log(e.target.dataset.correctAnswer);
+        currentScore = currentScore + 2;
+        scoreBox.innerHTML=currentScore;
+        console.log(document.getElementById("score-value").innerHTML);
+    }
+    else {
+        console.log("Incorrect");
+        currentScore = currentScore - 1;
+        scoreBox.innerHTML=currentScore;
+        console.log(document.getElementById("score-value").innerHTML);
+    }
+
+    loadQuestion();
+});
+
+
+
+
+// document.getElementsByClassName("answer").addEventListener("click", function(){
+//     console.log(this);
+// });
 
 //Score form
 //  show final score in span - final_score
