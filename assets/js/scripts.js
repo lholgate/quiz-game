@@ -7,9 +7,10 @@ let scoreForm = document.getElementById("score-form");
 let answerListItem = document.querySelector("#answers");
 let questionItem = document.querySelector("#question");
 let scoreBox = document.querySelector("#score-value");
+let scoreList = document.querySelector("#top-scores");
 
 let currentScore = 0;
-let highScores = {};
+let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,initials:"LAH"}];
 
 //Code for timer
 //  start timer
@@ -108,20 +109,35 @@ document.getElementById("answers").addEventListener("click", function(e){
 
 
 //Score Board
-//  Retrieve values from local storage
-//  sort records by score descending
-//  dynamically build li values and write values to ol
-//  listen for click on close button
-//  close score board
-//  open start form
+//  Retrieve values from local storage - Done
+//  sort records by score descending - Done
+//  dynamically build li values and write values to ol - Done
+//  listen for click on close button - Done
+//  close score board - Done
+//  open start form - Done 
 
 document.getElementById("score-board").addEventListener("click", function(){
     startForm.style.display="none";
     questionForm.style.display="none";
     initialsForm.style.display="none";
     scoreForm.style.display="flex";
+    // localStorage.setItem("highScores",JSON.stringify(highScores));
 
+    scoreList.innerHTML="";
+    highScores = JSON.parse(localStorage.getItem('highScores'));
+
+    highScores.sort((a, b) => b.score - a.score);
+
+    for (let i = 0; i < highScores.length; i++) {
+   
+        var hScore = document.createElement("li");
+        hScore.className = "score";
+        hScore.textContent = highScores[i].initials + " " + highScores[i].score;
+    
+        scoreList.append(hScore);
+    }
 });
+
 
 document.getElementById("btn-close").addEventListener("click", function(){
     startForm.style.display="flex";
