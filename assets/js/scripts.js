@@ -1,5 +1,7 @@
 // Define global variables
 
+answerListItem = document.querySelector("#answers");
+questionItem = document.querySelector("#question");
 
 //Code for timer
 //  start timer
@@ -16,10 +18,10 @@
 
 
 //Question form
-//  generate random number from 0 to length of question array
-//  retrieve questions from array
-//  set p-question values to question
-//  dynamically generate ol for answers for questions (mark data element true/false for each answer)
+//  generate random number from 0 to length of question array - Done
+//  retrieve questions from array - Done
+//  set p-question values to question - Done
+//  dynamically generate ol for answers for questions (mark data element true/false for each answer) - Done
 //  listen for slick event on each li in ol object
 //  use hover to change color of answers background
 //  on click:
@@ -30,6 +32,41 @@
 //  hide question form
 //  show score form
 
+var createAnswerList = function(answerList) {
+    console.log(answerList);
+
+    //document.getElementById("answers").innerHTML = "";
+    answerListItem.innerHTML = "";
+
+    for (let i = 0; i < answerList.length; i++) {
+
+        console.log(Object.keys(answerList[i]));
+        console.log(Object.values(answerList[i]));
+
+        var questionAnswer = document.createElement("li");
+        questionAnswer.className = "answer";
+        questionAnswer.setAttribute("data-correct-answer", Object.values(answerList[i]));
+        questionAnswer.textContent = Object.keys(answerList[i]);
+    
+        answerListItem.append(questionAnswer);
+
+    }
+}
+
+var loadAnswers = function(){
+    var answerList = questions[1].Answers;
+    createAnswerList(answerList);
+}
+
+var loadQuestion = function(){
+
+    let rndNumner = Math.floor(Math.random() * questions.length);
+
+    console.log(questions[rndNumner].Question);
+    questionItem.textContent = questions[rndNumner].Question;
+    var answerList = questions[rndNumner].Answers;
+    createAnswerList(answerList);
+}
 
 //Score form
 //  show final score in span - final_score
@@ -47,4 +84,6 @@
 //  listen for click on close button
 //  close score board
 //  open start form
+
+loadQuestion();
 
