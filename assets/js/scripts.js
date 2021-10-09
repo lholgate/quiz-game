@@ -5,19 +5,48 @@ let initialsForm = document.getElementById("initials-form");
 let scoreForm = document.getElementById("score-form");
 let initialBox = document.getElementById("initials");
 let finalScore = document.getElementById("final-score");
+const timerDisplay = document.getElementById("timer");
 
 let answerListItem = document.querySelector("#answers");
 let questionItem = document.querySelector("#question");
 let scoreBox = document.querySelector("#score-value");
 let scoreList = document.querySelector("#top-scores");
+  
 
 
 let currentScore = 0;
+let timeRemaining = 60;
 let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,initials:"LAH"}];
 
 //Code for timer
-//  start timer
-//  display timer remianing on screen span - timer_coutdown
+//  start timer - Done
+//  display timer remianing on screen span - timer_coutdown - Done
+function startTimer() {
+    const timeDisplay = document.getElementById("timer-countdown");
+    
+    intervalID = setInterval(function () {
+      timeRemaining--;
+  
+      timeDisplay.innerText = timeRemaining + "s";
+  
+      if (timeRemaining <= 0) {
+        stopTimer();
+      }
+      else if (timeRemaining < 10) {
+        timerDisplay.style.background = "red";
+      }
+      else if (timeRemaining < 30)  {
+        timerDisplay.style.background = "yellow";
+      }
+    }, 1000);
+  }
+  
+function stopTimer() {
+    clearInterval(intervalID);
+    finalScore.innerHTML=currentScore;
+    questionForm.style.display="none";
+    initialsForm.style.display="flex";
+  }
 
 
 //Loading screen:
@@ -29,10 +58,13 @@ let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,i
 
 document.getElementById("btn-start").addEventListener("click", function(e){
     startForm.style.display="none";
-    questionForm.style.display="none";
-    initialsForm.style.display="flex";
+    questionForm.style.display="flex";
+    initialsForm.style.display="none";
     scoreForm.style.display="none";
-
+    currentScore = 0;
+    timeRemaining = 60;
+    timerDisplay.style.background = "green";
+    startTimer();
     loadQuestion();
 });
 
@@ -90,17 +122,12 @@ document.getElementById("answers").addEventListener("click", function(e){
     else {
         currentScore = currentScore - 1;
         scoreBox.innerHTML=currentScore;
+        timeRemaining -= 5;
     }
 
     loadQuestion();
 });
 
-
-
-
-// document.getElementsByClassName("answer").addEventListener("click", function(){
-//     console.log(this);
-// });
 
 //Score form
 //  show final score in span - final_score
