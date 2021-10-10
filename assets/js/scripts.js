@@ -34,6 +34,7 @@ function startTimer() {
       }
       else if (timeRemaining < 10) {
         timerDisplay.style.background = "red";
+        timerDisplay.classList.add("blink");
       }
       else if (timeRemaining < 30)  {
         timerDisplay.style.background = "yellow";
@@ -43,6 +44,8 @@ function startTimer() {
   
 function stopTimer() {
     clearInterval(intervalID);
+    timerDisplay.classList.remove("blink");
+    timerDisplay.style.background = "white";
     finalScore.innerHTML=currentScore;
     questionForm.style.display="none";
     initialsForm.style.display="flex";
