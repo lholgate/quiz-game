@@ -30,6 +30,18 @@ The following animation demonstrates the application functionality:
 
 ![Demonstration of the Coding Quiz Challenge.](./assets/images/04-web-apis-homework-demo.gif)
 
+
+Finished applciation - https://lholgate.github.io/quiz-game/
+
+![Image of start screen.](./assets/images/start.PNG)
+
+![Image of question screen.](./assets/images/question.PNG)
+
+![Image of score screen.](./assets/images/score.PNG)
+
+![Image of question screen.](./assets/images/high-scores.PNG)
+
+
 ### Review
 
 You are required to submit the following for review:
