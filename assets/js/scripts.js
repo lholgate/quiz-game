@@ -195,6 +195,7 @@ document.getElementById("score-board").addEventListener("click", function(){
     highScores = JSON.parse(localStorage.getItem('highScores'));
     if (highScores === null) {
         highScores = [];
+        localStorage.setItem("highScores",JSON.stringify(highScores));
     } 
     loadScores();
 });
