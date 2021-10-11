@@ -1,11 +1,12 @@
 // Define global variableslet scoreBox = document.querySelector("#score-value");
-let startForm = document.getElementById("start-form");
-let questionForm = document.getElementById("question-form");
-let initialsForm = document.getElementById("initials-form");
-let scoreForm = document.getElementById("score-form");
-let initialBox = document.getElementById("initials");
-let finalScore = document.getElementById("final-score");
+const startForm = document.getElementById("start-form");
+const questionForm = document.getElementById("question-form");
+const initialsForm = document.getElementById("initials-form");
+const scoreForm = document.getElementById("score-form");
+const initialBox = document.getElementById("initials");
+const finalScore = document.getElementById("final-score");
 const timerDisplay = document.getElementById("timer");
+const timeDisplay = document.getElementById("timer-countdown");
 
 let answerListItem = document.querySelector("#answers");
 let questionItem = document.querySelector("#question");
@@ -16,13 +17,12 @@ let scoreList = document.querySelector("#top-scores");
 
 let currentScore = 0;
 let timeRemaining = 60;
-let highScores = [{score:10,initials:"LAH"},{score:5,initials:"LAH"},{score:15,initials:"LAH"}];
+let highScores = [];
 
 //Code for timer
 //  start timer - Done
 //  display timer remianing on screen span - timer_coutdown - Done
 function startTimer() {
-    const timeDisplay = document.getElementById("timer-countdown");
     
     intervalID = setInterval(function () {
       timeRemaining--;
@@ -126,6 +126,7 @@ document.getElementById("answers").addEventListener("click", function(e){
         currentScore = currentScore - 1;
         scoreBox.innerHTML=currentScore;
         timeRemaining -= 5;
+        timeDisplay.innerText = timeRemaining + "s";
     }
 
     loadQuestion();

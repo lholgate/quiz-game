@@ -1,6 +1,6 @@
 // Array of questions for the quiz.
 
-let questions = [
+const questions = [
     {id:1,
     Question:"JavaScript is case sensitive language.",
     Answers:[
