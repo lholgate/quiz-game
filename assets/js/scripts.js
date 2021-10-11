@@ -12,6 +12,7 @@ let answerListItem = document.querySelector("#answers");
 let questionItem = document.querySelector("#question");
 let scoreBox = document.querySelector("#score-value");
 let scoreList = document.querySelector("#top-scores");
+let newScore = [];
   
 
 
@@ -144,8 +145,13 @@ document.getElementById("btn-save").addEventListener("click", function(){
 
     if (initialBox.value) {
         highScores = JSON.parse(localStorage.getItem('highScores'));
-        let newScore = {score:finalScore.innerText,initials:initialBox.value.toUpperCase()};
+        newScore = {score:finalScore.innerText,initials:initialBox.value.toUpperCase()};
+        if (highScores === null) {
+            highScores = [];
+        } 
+            
         highScores.push(newScore);
+
         localStorage.setItem("highScores",JSON.stringify(highScores));
         loadScores();
         initialBox.value="";
@@ -186,6 +192,10 @@ function loadScores(){
 }
 
 document.getElementById("score-board").addEventListener("click", function(){
+    highScores = JSON.parse(localStorage.getItem('highScores'));
+    if (highScores === null) {
+        highScores = [];
+    } 
     loadScores();
 });
 
